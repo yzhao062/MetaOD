@@ -60,14 +60,12 @@ Alternatively, you could clone and run setup.py file:
 
 
 * Python 3.5, 3.6, or 3.7
-* combo>=0.0.8
-* joblib
+* joblib>=0.14.1
+* liac-arff
+* matplotlib
 * numpy>=1.13
-* numba>=0.35
-* pandas>=0.25
-* scipy>=0.20
-* scikit_learn>=0.20
-* tqdm
-* torch (this should be installed manually)
-* xgboost (this should be installed manually)
-* xlrd >= 1.0.0
+* scipy>=0.19.1
+* scikit_learn>=0.19.1
+* pandas
+* psutil
+* pyod>=0.7.5
