@@ -36,7 +36,7 @@ or::
 
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
-
+* `Quick Start for Meta Feature Generation <#quick-start-for-meta-feature-generation>`_
 
 
 ------------
@@ -50,7 +50,7 @@ For selecting an outlier detection model for a new dataset, one only needs the o
 
 .. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/MetaOD_Flowchart.jpg
    :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/MetaOD_Flowchart.jpg
-   :alt: PyHealth Logo
+   :alt: metaod_flow
    :align: center
 
 -----
@@ -90,3 +90,32 @@ Alternatively, you could clone and run setup.py file:
 * pandas
 * psutil
 * pyod>=0.7.5
+
+
+Quick Start for Meta Feature Generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Getting the embedding of an arbitrary dataset is first step of MetaOD, which
+cam be done by our specialized meta-feature generation function.
+
+It may be used for other purposes as well, e.g., measuring the similarity of
+two datasets.
+
+.. code-block:: python
+
+    # import meta-feature generator
+    from metaod.models.gen_meta_features import gen_meta_features
+
+    meta_features = gen_meta_features(X)
+
+A simple example of visualizing two different environments using TSNE with
+our meta-features are shown below. The environment on the left is composed
+100 datasets with similarity, and the same color stands for same group of datasets.
+The environment on the left is composed
+62 datasets without known similarity. Our meta-features successfully capture
+the underlying similarity in left figure.
+
+.. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_viz.jpg
+   :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_viz.jpg
+   :alt: meta_viz
+   :align: center
