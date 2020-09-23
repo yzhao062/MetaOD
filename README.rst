@@ -2,17 +2,14 @@ Automating Outlier Detection via Meta-Learning (MetaOD)
 =====================================================================
 
 **Development Status**: **As of 09/22/2020, MetaOD is under active development and in its alpha stage. Please follow, star, and fork to get the latest update**! 
-For paper reproducibility, please see the paper_reproducibility folder for experimental environment.
+For paper reproducibility, please see the paper_reproducibility folder for instruction.
 
 **Given an unsupervised outlier detection (OD) task on a new dataset, how can we automatically select a good outlier detection method and its hyperparameter(s) (collectively called a model)?**
 Thus far, model selection for OD has been a "black art"; as any model evaluation is infeasible due to the lack of (i) hold-out data with labels, and (ii) a universal objective function.
-In this work, we develop the first principled data-driven approach to model selection for OD, called MetaOD,
-based on meta-learning. MetaOD capitalizes on the past performances of a large body of detection models on existing outlier detection benchmark datasets, and carries over this prior experience to automatically select an effective model to be employed on a new dataset.
-To capture task similarity, we introduce specialized meta-features that quantify outlying characteristics of a dataset.
-Through comprehensive experiments, we show the effectiveness of MetaOD in selecting a detection model that significantly outperforms the most popular outlier detectors (e.g., LOF and iForest) as well as various state-of-the-art unsupervised meta-learners while being extremely fast.
-To foster reproducibility and further research on this new problem, we open-source our entire meta-learning system, benchmark environment, and testbed datasets.
 
-**MetaOD is an unsupervised method for selecting OD models on an arbitrary dataset**. MetaOD is trained on extensive OD benchmark datasets to capitalize the prior experiece; it could select the potentially best performing dataset for your datasets. *Simply put, you could plug in your dataset, and MetaOD will return the potentially best outlier detection model for you*!
+**In this work, we develop the first principled data-driven approach to model selection for OD, called MetaOD, based on meta-learning**.
+In short, MetaOD is trained on extensive OD benchmark datasets to capitalize the prior experience so that **it could select the potentially best performing model for unseen datasets**.
+*Simply put, one could feed in a dataset, and MetaOD will return the potentially best outlier detection model for it*, which boosts both detection quality and reduces the cost of running multiple models .
 
 
 `Preprint paper <https://arxiv.org/abs/2009.10606>`_ | `Reproducibility instruction <https://github.com/yzhao062/MetaOD/tree/master/paper_reproducibility>`_
@@ -39,6 +36,22 @@ or::
 
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
+
+
+
+------------
+
+System Introduction
+^^^^^^^^^^^^^^^^^^^
+
+As shown in the figure below, MetaOD contains offline meta-learner training and online model selection.
+For selecting an outlier detection model for a new dataset, one only needs the online model selection. Specifically, to be finished.
+
+
+.. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/MetaOD_Flowchart.jpg
+   :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/MetaOD_Flowchart.jpg
+   :alt: PyHealth Logo
+   :align: center
 
 -----
 
