@@ -2,13 +2,20 @@ Automating Outlier Detection via Meta-Learning (MetaOD)
 =====================================================================
 
 **Development Status**: **As of 09/22/2020, MetaOD is under active development and in its alpha stage. Please follow, star, and fork to get the latest update**! 
-For paper reproducibility, please see the paper_reproducibility folder for experimental enviornment.
+For paper reproducibility, please see the paper_reproducibility folder for experimental environment.
 
-**Given an unsupervised outlier detection (OD) task on a new dataset, how can we automatically select a good outlier detection method and its hyperparameter(s) (collectively called a model)?** Thus far, model selection for OD has been a "black art"; as any model evaluation is infeasible due to the lack of (i) hold-out data with labels, and (ii) a universal objective function. In this work, we develop the first principled data-driven approach to model selection for OD, called MetaOD,
-based on meta-learning. MetaOD capitalizes on the past performances of a large body of detection models on existing outlier detection benchmark datasets, and carries over this prior experience to automatically select an effective model to be employed on a new dataset. To capture task similarity, we introduce specialized meta-features that quantify outlying characteristics of a dataset. Through comprehensive experiments, we show the effectiveness of MetaOD in selecting a detection model that significantly outperforms the most popular outlier detectors (e.g., LOF and iForest) as well as various state-of-the-art unsupervised meta-learners while being extremely fast. To foster reproducibility and further research on this new problem, we open-source our entire meta-learning system, benchmark environment, and testbed datasets.
+**Given an unsupervised outlier detection (OD) task on a new dataset, how can we automatically select a good outlier detection method and its hyperparameter(s) (collectively called a model)?**
+Thus far, model selection for OD has been a "black art"; as any model evaluation is infeasible due to the lack of (i) hold-out data with labels, and (ii) a universal objective function.
+In this work, we develop the first principled data-driven approach to model selection for OD, called MetaOD,
+based on meta-learning. MetaOD capitalizes on the past performances of a large body of detection models on existing outlier detection benchmark datasets, and carries over this prior experience to automatically select an effective model to be employed on a new dataset.
+To capture task similarity, we introduce specialized meta-features that quantify outlying characteristics of a dataset.
+Through comprehensive experiments, we show the effectiveness of MetaOD in selecting a detection model that significantly outperforms the most popular outlier detectors (e.g., LOF and iForest) as well as various state-of-the-art unsupervised meta-learners while being extremely fast.
+To foster reproducibility and further research on this new problem, we open-source our entire meta-learning system, benchmark environment, and testbed datasets.
 
-**MetaOD is an unsupervised method for selecting OD models on an arbitrary dataset**. MetaOD is trained on extensive OD benchmark datasets to captitalize the prior experiece; it could select the potentially best performing dataset for your datasets. *Simply put, you could plug in your dataset, and MetaOD will return the potentially best outlier detection model for you*!
+**MetaOD is an unsupervised method for selecting OD models on an arbitrary dataset**. MetaOD is trained on extensive OD benchmark datasets to capitalize the prior experiece; it could select the potentially best performing dataset for your datasets. *Simply put, you could plug in your dataset, and MetaOD will return the potentially best outlier detection model for you*!
 
+
+`Preprint paper <https://arxiv.org/abs/2009.10606>`_ | `Reproducibility instruction <https://github.com/yzhao062/MetaOD/tree/master/paper_reproducibility>`_
 
 **Citing MetaOD**\ :
 
@@ -18,12 +25,13 @@ citations to the following paper::
     @article{zhao2020automating,
       author  = {Zhao, Yue and Ryan Rossi and Leman Akoglu},
       title   = {Automating Outlier Detection via Meta-Learning},
+      journal = {arXiv preprint arXiv:2009.10606},
       year    = {2020},
     }
 
 or::
 
-    Zhao, Y., Rossi, R., and Akoglu, L., 2020. Automating Outlier Detection via Meta-Learning.
+    Zhao, Y., Rossi, R., and Akoglu, L., 2020. Automating Outlier Detection via Meta-Learning. arXiv preprint arXiv:2009.10606.
     
     
 **Table of Contents**\ :
