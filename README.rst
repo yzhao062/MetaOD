@@ -115,7 +115,7 @@ The environment on the left is composed
 62 datasets without known similarity. Our meta-features successfully capture
 the underlying similarity in left figure.
 
-.. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_viz.jpg
-   :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_viz.jpg
+.. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
+   :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
    :alt: meta_viz
    :align: center
