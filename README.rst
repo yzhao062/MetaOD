@@ -113,7 +113,7 @@ our meta-features are shown below. The environment on the left is composed
 100 datasets with similarity, and the same color stands for same group of datasets.
 The environment on the left is composed
 62 datasets without known similarity. Our meta-features successfully capture
-the underlying similarity in left figure.
+the underlying similarity in the left figure.
 
 .. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
    :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
