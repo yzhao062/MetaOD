@@ -1,0 +1,7 @@
+joblib>=0.14.1
+liac-arff
+numpy>=1.13
+scipy>=0.20
+scikit_learn>=0.19.1
+pandas>=0.20
+pyod>=0.8
