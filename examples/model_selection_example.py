@@ -10,6 +10,7 @@ from zipfile import ZipFile
 from joblib import load
 import numpy as np
 import urllib.request 
+import pickle
 
 # temporary solution for relative imports in case pyod is not installed
 # if metaod is installed, no need to use the following line
@@ -20,6 +21,7 @@ from pyod.utils.data import generate_data
 # from metaod.models.predict_metaod import select_model
 from metaod.models.gen_meta_features import generate_meta_features
 from metaod.models.utility import prepare_trained_model
+from metaod.models.metaod import MetaODClass
 
 if __name__ == "__main__":
 
@@ -38,7 +40,7 @@ if __name__ == "__main__":
                       contamination=contamination,
                       random_state=42)
     
-    prepare_trained_model()
+    # prepare_trained_model()
 
 
     meta_scalar = load(os.path.join("trained_models","meta_scalar.joblib"))
@@ -49,14 +51,16 @@ if __name__ == "__main__":
     
     # use all trained models for ensemble
     trained_models = [
+        # 'test.pk'
         "train_0.joblib", 
         # "train_1.joblib", 
         # "train_42.joblib"
         ]
     
     for i, model in enumerate(trained_models):
-        clf = load(model)
-        # clf = load(os.path.join("trained_models", model))
+        # file = open(model, 'rb')
+        # clf = pickle.load(file)
+        clf = load(os.path.join("trained_models", model))
         
     # # get top 10 models
     # clf_setting = select_model(X_train, n_selection=10)
