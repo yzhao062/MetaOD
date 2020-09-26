@@ -21,7 +21,7 @@ from pyod.utils.data import generate_data
 # from metaod.models.predict_metaod import select_model
 from metaod.models.gen_meta_features import generate_meta_features
 from metaod.models.utility import prepare_trained_model
-from metaod.models.metaod import MetaODClass
+from metaod.models.core import MetaODClass
 
 if __name__ == "__main__":
 
@@ -58,8 +58,6 @@ if __name__ == "__main__":
         ]
     
     for i, model in enumerate(trained_models):
-        # file = open(model, 'rb')
-        # clf = pickle.load(file)
         clf = load(os.path.join("trained_models", model))
         
     # # get top 10 models

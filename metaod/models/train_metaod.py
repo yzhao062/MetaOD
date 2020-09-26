@@ -18,8 +18,8 @@ from scipy.io import loadmat
 from utility import read_arff, fix_nan
 from joblib import dump
 
-from gen_meta_features import generate_meta_features
-from core import MetaODClass
+from metaod.models.gen_meta_features import generate_meta_features
+from metaod.models.core import MetaODClass
 
 # read in performance table
 roc_df = pd.read_excel(os.path.join('data', 'performance_table.xlsx'),
@@ -207,11 +207,19 @@ clf.train(n_iter=50, meta_features=train_meta, valid_meta=valid_meta,
 # output transformer (for meta-feature) and the trained clf
 dump(clf, 'train_' + str(seed) + '.joblib')
 
-# %%
+#%%
+# # %%
 # import pickle
-# MetaODClass.__module__ = "metaod"
-# file = open('test.pk', 'wb')
-# pickle.dump(clf, file)
+# from metaod.models.core import MetaODClass
 
-# # file = open('rf.pk', 'wb')
-# # pickle.dump(clf.user_vecs, file)
+# if __name__ == "__main__":
+#     # # code for standalone use
+#     # t = Thing("foo")
+#     # Thing.__module__ = "thing"
+#     # t.save("foo.pickle")
+#     # MetaODClass.__module__ = "metaod"
+#     file = open('test.pk', 'wb')
+#     pickle.dump(clf, file)
+
+# # # file = open('rf.pk', 'wb')
+# # # pickle.dump(clf.user_vecs, file)
