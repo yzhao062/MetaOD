@@ -18,9 +18,7 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname("__file__"), '..')))
 
 from pyod.utils.data import generate_data
-# from metaod.models.predict_metaod import select_model
 from metaod.models.gen_meta_features import generate_meta_features
-
 from metaod.models.utility import prepare_trained_model
 
 from metaod.models.core import MetaODClass
