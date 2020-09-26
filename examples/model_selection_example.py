@@ -24,6 +24,26 @@ from metaod.models.utility import prepare_trained_model
 from metaod.models.core import MetaODClass
 from metaod.models.predict_metaod import select_model
 
+# def prepare_trained_model(url='https://github.com/yzhao062/MetaOD/raw/master/saved_models/trained_models.zip', 
+#                           filename='trained_models.zip',
+#                           save_path='trained_models'):
+            
+#     if not os.path.exists(save_path):
+#         os.makedirs(save_path)
+        
+#     urllib.request.urlretrieve(url, filename)
+    
+#     # print(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+#     # #                       'trained_models.zip'))
+#     # #todo: verify file exists
+#     with ZipFile(filename, 'r') as zip:
+#         # # printing all the contents of the zip file
+#         # zip.printdir()
+#         # extracting all the files
+#         print('Extracting trained models now...')
+#         zip.extractall()
+#         print('Finish extracting models')
+
 if __name__ == "__main__":
 
     contamination = 0.1  # percentage of outliers
@@ -37,33 +57,30 @@ if __name__ == "__main__":
                       n_features=3,
                       contamination=contamination,
                       random_state=42)
-        
+    
+    prepare_trained_model()
     clf_setting = select_model(X_train, n_selection=10)
     
-    # # load and unzip models
+    # # # load and unzip models
     # prepare_trained_model()
 
-    # # load PCA scalar
-    # meta_scalar = load(os.path.join("trained_models","meta_scalar.joblib"))
-    # meta_X, _ = generate_meta_features(X_train)
-    # meta_X = meta_scalar.transform(np.asarray(meta_X).reshape(1, -1))
-    
-    # model_lists = list(load(os.path.join("trained_models","model_list.joblib")))
-    
-    # # use all trained models for ensemble
-    # trained_models = [
-    #     # 'test.pk'
-    #     "train_0.joblib", 
-    #     # "train_1.joblib", 
-    #     # "train_42.joblib"
-    #     ]
-    
-    # for i, model in enumerate(trained_models):
-    #     clf = load(os.path.join("trained_models", model))
-        
-    # # get top 10 models
-    # clf_setting = select_model(X_train, n_selection=10)
-    # meta_X, _ = generate_meta_features(X_train)
-    # meta_X = np.asarray(meta_X).reshape(1, -1)
 
-    # w = load(os.path.join("trained_models", "train_1.joblib"))
+    # url='https://github.com/yzhao062/MetaOD/raw/master/saved_models/trained_models.zip'
+    # filename='trained_models.zip'
+    # save_path='trained_models'
+    
+    # if not os.path.exists(save_path):
+    #     os.makedirs(save_path)
+        
+    # urllib.request.urlretrieve(url, filename)
+    
+    # # print(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+    # # #                       'trained_models.zip'))
+    # # #todo: verify file exists
+    # with ZipFile(filename, 'r') as zip:
+    #     # # printing all the contents of the zip file
+    #     # zip.printdir()
+    #     # extracting all the files
+    #     print('Extracting trained models now...')
+    #     zip.extractall()
+    #     print('Finish extracting models')
