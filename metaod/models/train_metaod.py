@@ -23,8 +23,8 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import dcg_score, ndcg_score
 from sklearn.preprocessing import MinMaxScaler
 
-from metaod import MetaOD
-from gen_meta_features import gen_meta_features
+from metaod import MetaODClass
+from gen_meta_features import generate_meta_features
 
 from scipy.sparse.linalg import svds
 from scipy.linalg import svd
@@ -33,7 +33,7 @@ from numpy import diag
 from scipy.io import loadmat
 
 from utility import read_arff, fix_nan
-
+from joblib import dump
 
 # read in performance table
 roc_df = pd.read_excel(os.path.join('data', 'performance_table.xlsx'), sheet_name='AP')
@@ -46,6 +46,7 @@ roc_mat_red = fix_nan(roc_mat[2:, 4:].astype('float'))
 n_datasets, n_configs = roc_mat_red.shape[0], roc_mat_red.shape[1]
 data_headers = roc_mat[2:, 0]
 config_headers = roc_df.columns[4:]
+dump(config_headers, 'model_list.joblib')
 
 #%%
 
@@ -103,7 +104,7 @@ for j in range(23):
     mat_file = mat_file_list[j]
     mat = loadmat(os.path.join("data", "ODDS", mat_file))
     X = mat['X']
-    meta_mat[j, :], meta_vec_names = gen_meta_features(X)
+    meta_mat[j, :], meta_vec_names = generate_meta_features(X)
     print(j,mat_file )
     
 # read arff files
@@ -166,7 +167,7 @@ for j in range(23, 42):
     mat_file_path = os.path.join("data", "DAMI", arff_list[j-24])
     X, y, attributes = read_arff(mat_file_path, misplaced_list)
     X = check_array(X).astype('float64')
-    meta_mat[j, :], meta_vec_names  = gen_meta_features(X)
+    meta_mat[j, :], meta_vec_names  = generate_meta_features(X)
     print("processing", j, mat_file)
 
 # read emmott dataset
@@ -177,16 +178,19 @@ for j in range(42, 142):
     print("processing", j, selected_bench_loc[j-42])
     mat = pd.read_csv(os.path.join("data", "Emmott", selected_bench_loc[j-42]))
     X = mat.to_numpy()[:, 6:].astype(float)
-    meta_mat[j, :], meta_vec_names = gen_meta_features(X)
+    meta_mat[j, :], meta_vec_names = generate_meta_features(X)
     
 # use cleaned and transformed meta-features
-meta_mat_transformed = MinMaxScaler().fit_transform(meta_mat)
+meta_scalar = MinMaxScaler()
+meta_mat_transformed = meta_scalar.fit_transform(meta_mat)
 meta_mat_transformed = fix_nan(meta_mat_transformed)
+dump(meta_scalar, 'meta_scalar.joblib') 
 #%% train model
-
+from metaod import MetaODClass
 # split data into train and valid
+seed = 2
 full_list = list(range(n_datasets))
-random.Random(42).shuffle(full_list)
+random.Random(seed).shuffle(full_list)
 n_train = int(0.85*n_datasets)
 
 train_index = full_list[:n_train]
@@ -198,13 +202,16 @@ valid_set = roc_mat_red[valid_index, :].astype('float64')
 train_meta = meta_mat_transformed[train_index, :].astype('float64')
 valid_meta = meta_mat_transformed[valid_index, :].astype('float64')
 
-clf = MetaOD(train_set, valid_performance=valid_set, n_factors=30, learning='sgd')
+clf = MetaODClass(train_set, valid_performance=valid_set, n_factors=30, learning='sgd')
 clf.train(n_iter=50, meta_features=train_meta, valid_meta=valid_meta, 
-           learning_rate=0.05, max_rate=0.9, min_rate=0.1, discount=1, n_steps=8)
+            learning_rate=0.05, max_rate=0.9, min_rate=0.1, discount=1, n_steps=8)
 
-# U = EMFF.user_vecs
-# V = EMFF.item_vecs
+# U = clf.user_vecs
+# V = clf.item_vecs
 
-# # print(EMF.regr_multirf.predict(test_meta).shape)
-# predicted_scores = EMFF.predict_new(test_meta_transformed)
+# # # print(EMF.regr_multirf.predict(test_meta).shape)
+# predicted_scores = clf.predict(valid_meta)
 # predicted_scores_max = np.nanargmax(predicted_scores, axis=1)
+# print()
+# output transformer (for meta-feature) and the trained clf
+dump(clf, 'train_'+str(seed)+'.joblib')

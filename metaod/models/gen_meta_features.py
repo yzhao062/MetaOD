@@ -129,7 +129,7 @@ def list_process_name(var):
             var + '_skewness', var + '_kurtosis']
 
 
-def gen_meta_features(X):
+def generate_meta_features(X):
     """Get the meta-features of a datasets X
 
     Parameters

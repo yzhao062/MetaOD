@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-
+import os
 import numpy as np
 import arff
+from zipfile import ZipFile
+import urllib.request 
 
 def Diff(li1, li2): 
     return (list(set(li1) - set(li2))) 
@@ -43,3 +45,18 @@ def read_arff(file_path, misplaced_list):
         raise ValueError('wrong sum')
 
     return X, y, attributes
+
+def prepare_trained_model(url='https://github.com/yzhao062/MetaOD/blob/master/saved_models/metaod_models.zip', filename='metaod_models.zip'):
+    urllib.request.urlretrieve(url, filename)
+    #todo: verify file exists
+    with ZipFile(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                          'trained_models.zip'), 'r') as zip:
+        # # printing all the contents of the zip file
+        # zip.printdir()
+    
+        # extracting all the files
+        print('Extracting trained models now...')
+        zip.extractall(path='trained_models')
+        print('Finish extracting models')
+    
+    

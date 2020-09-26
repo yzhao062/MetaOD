@@ -1,0 +1,7 @@
+prune examples
+prune notebooks
+prune paper_reproducibility
+prune metaod/test
+prune README.md
+include README.rst
+include requirements.txt
