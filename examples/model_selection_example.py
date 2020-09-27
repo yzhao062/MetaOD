@@ -3,14 +3,6 @@
 # License: BSD 2 clause
 
 
-# environment setting
-import os
-import sys
-
-# temporary solution for relative imports in case pyod is not installed
-# if metaod is installed, no need to use the following line
-sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname("__file__"), '..')))
 from sklearn.metrics import average_precision_score
 
 from pyod.utils.data import generate_data

@@ -1,30 +1,31 @@
 Automating Outlier Detection via Meta-Learning (MetaOD)
 =====================================================================
 
-**Development Status**: **As of 09/22/2020, MetaOD is under active development and in its alpha stage. Please follow, star, and fork to get the latest update**! 
+**Development Status**: **As of 09/26/2020, MetaOD is under active development and in its alpha stage. Please follow, star, and fork to get the latest update**!
 For paper reproducibility, please see the paper_reproducibility folder for instruction.
 
 **Given an unsupervised outlier detection (OD) task on a new dataset, how can we automatically select a good outlier detection method and its hyperparameter(s) (collectively called a model)?**
 Thus far, model selection for OD has been a "black art"; as any model evaluation is infeasible due to the lack of (i) hold-out data with labels, and (ii) a universal objective function.
-
-**In this work, we develop the first principled data-driven approach to model selection for OD, called MetaOD, based on meta-learning**.
+In this work, we develop the first principled data-driven approach to model selection for OD, called MetaOD, based on meta-learning.
 In short, MetaOD is trained on extensive OD benchmark datasets to capitalize the prior experience so that **it could select the potentially best performing model for unseen datasets**.
-*Simply put, one could feed in a dataset, and MetaOD will return the potentially best outlier detection model for it*, which boosts both detection quality and reduces the cost of running multiple models .
+
+Using MetaOD is easy.
+**You could pass in a dataset, and MetaOD will return the most performing outlier detection models for it**, which boosts both detection quality and reduces the cost of running multiple models.
 
 
-**API Demo for selecting outlier detection model for a new dataset**\ :
+**API Demo for selecting outlier detection model on a new dataset (within 3 lines)**\ :
 
 
-   .. code-block:: python
+.. code-block:: python
 
-      from metaod.models.utility import prepare_trained_model
-      from metaod.models.predict_metaod import select_model
+   from metaod.models.utility import prepare_trained_model
+   from metaod.models.predict_metaod import select_model
 
-      # load pretrained models
-      prepare_trained_model()
+   # load pretrained MetaOD model
+   prepare_trained_model()
 
-      # recommended models. this returns the top model for X_train
-      selected_models = select_model(X_train, n_selection=100)
+   # use MetaOD to recommend models. It returns the top n model for new data X_train
+   selected_models = select_model(X_train, n_selection=100)
 
 
 
@@ -148,36 +149,36 @@ The key procedures are below:
 
 #. Load some synthetic datasets
 
-   .. code-block:: python
+.. code-block:: python
 
-      # Generate sample data
-      X_train, y_train, X_test, y_test = \
-          generate_data(n_train=1000,
-                        n_test=100,
-                        n_features=3,
-                        contamination=0.5,
-                        random_state=42)
+   # Generate sample data
+   X_train, y_train, X_test, y_test = \
+       generate_data(n_train=1000,
+                     n_test=100,
+                     n_features=3,
+                     contamination=0.5,
+                     random_state=42)
 
 #. Use MetaOD to select top 100 models
 
-   .. code-block:: python
+.. code-block:: python
 
-      from metaod.models.utility import prepare_trained_model
-      from metaod.models.predict_metaod import select_model
+   from metaod.models.utility import prepare_trained_model
+   from metaod.models.predict_metaod import select_model
 
-      # load pretrained models
-      prepare_trained_model()
+   # load pretrained models
+   prepare_trained_model()
 
-      # recommended models. this returns the top model for X_train
-      selected_models = select_model(X_train, n_selection=100)
+   # recommended models. this returns the top model for X_train
+   selected_models = select_model(X_train, n_selection=100)
 
 
 #. Show the selected models' performance evaluation.
 
-   .. code-block:: python
+.. code-block:: python
 
 
-      1st model Average Precision 0.9729833161334711
-      10th model Average Precision 0.9631787029256742
-      50th model Average Precision 0.9228434081007967
-      100th model Average Precision 0.9228434081007967
+   1st model Average Precision 0.9729833161334711
+   10th model Average Precision 0.9631787029256742
+   50th model Average Precision 0.9228434081007967
+   100th model Average Precision 0.9228434081007967
