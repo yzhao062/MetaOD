@@ -14,6 +14,8 @@ def argmaxatn(w, nth):
     return t[-1*nth]
 
 def fix_nan(X):
+    # TODO: should store the mean of the meta features to be used for test_meta
+    # replace by 0 for now
     col_mean = np.nanmean(X, axis = 0) 
     inds = np.where(np.isnan(X))
     X[inds] = np.take(col_mean, inds[1]) 

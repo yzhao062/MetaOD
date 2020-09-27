@@ -11,6 +11,7 @@ from pyod.utils.data import generate_data
 import numpy as np
 
 from metaod.models.gen_meta_features import generate_meta_features
+from metaod.models.utility import fix_nan
 from pyod.utils.data import generate_data
 
 def get_top_models(p, n):
@@ -34,7 +35,10 @@ def select_model(X, trained_model_location="trained_models", n_selection=1):
     meta_scalar = load(os.path.join(trained_model_location,"meta_scalar.joblib"))
     # generate meta features         
     meta_X, _ = generate_meta_features(X)
-    meta_X = meta_scalar.transform(np.asarray(meta_X).reshape(1, -1))
+    meta_X = np.nan_to_num(meta_X,nan=0)
+    # replace nan by 0 for now
+    # todo: replace by mean is better as fix_nan 
+    meta_X = meta_scalar.transform(np.asarray(meta_X).reshape(1, -1)).astype(float)
     
     # use all trained models for ensemble
     trained_models = [
@@ -66,7 +70,7 @@ def select_model(X, trained_model_location="trained_models", n_selection=1):
 # if __name__ == "__main__":
 
 #     contamination = 0.1  # percentage of outliers
-#     n_train = 200  # number of training points
+#     n_train = 1000  # number of training points
 #     n_test = 100  # number of testing points
 
 #     # Generate sample data

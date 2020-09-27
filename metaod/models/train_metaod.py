@@ -15,9 +15,9 @@ from sklearn.preprocessing import MinMaxScaler
 
 from scipy.io import loadmat
 
-from utility import read_arff, fix_nan
 from joblib import dump
 
+from metaod.models.utility import read_arff, fix_nan
 from metaod.models.gen_meta_features import generate_meta_features
 from metaod.models.core import MetaODClass
 

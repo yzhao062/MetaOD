@@ -12,6 +12,22 @@ In short, MetaOD is trained on extensive OD benchmark datasets to capitalize the
 *Simply put, one could feed in a dataset, and MetaOD will return the potentially best outlier detection model for it*, which boosts both detection quality and reduces the cost of running multiple models .
 
 
+**API Demo for selecting outlier detection model for a new dataset**\ :
+
+
+   .. code-block:: python
+
+      from metaod.models.utility import prepare_trained_model
+      from metaod.models.predict_metaod import select_model
+
+      # load pretrained models
+      prepare_trained_model()
+
+      # recommended models. this returns the top model for X_train
+      selected_models = select_model(X_train, n_selection=100)
+
+
+
 `Preprint paper <https://arxiv.org/abs/2009.10606>`_ | `Reproducibility instruction <https://github.com/yzhao062/MetaOD/tree/master/paper_reproducibility>`_
 
 **Citing MetaOD**\ :
@@ -36,6 +52,7 @@ or::
 
 * `Installation <#installation>`_
 * `API Cheatsheet & Reference <#api-cheatsheet--reference>`_
+* `Quick Start for Model Selection <#quick-start-for-model-selection>`_
 * `Quick Start for Meta Feature Generation <#quick-start-for-meta-feature-generation>`_
 
 
@@ -119,3 +136,48 @@ the underlying similarity in the left figure.
    :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
    :alt: meta_viz
    :align: center
+
+
+Quick Start for Model Selection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`"examples/model_selection_example.py" <https://github.com/yzhao062/MetaOD/blob/master/examples/model_selection_example.py>`_
+provide an example on using MetaOD for selecting top models on a new datasets, which is fully unsupervised.
+
+The key procedures are below:
+
+#. Load some synthetic datasets
+
+   .. code-block:: python
+
+      # Generate sample data
+      X_train, y_train, X_test, y_test = \
+          generate_data(n_train=1000,
+                        n_test=100,
+                        n_features=3,
+                        contamination=0.5,
+                        random_state=42)
+
+#. Use MetaOD to select top 100 models
+
+   .. code-block:: python
+
+      from metaod.models.utility import prepare_trained_model
+      from metaod.models.predict_metaod import select_model
+
+      # load pretrained models
+      prepare_trained_model()
+
+      # recommended models. this returns the top model for X_train
+      selected_models = select_model(X_train, n_selection=100)
+
+
+#. Show the selected models' performance evaluation.
+
+   .. code-block:: python
+
+
+      1st model Average Precision 0.9729833161334711
+      10th model Average Precision 0.9631787029256742
+      50th model Average Precision 0.9228434081007967
+      100th model Average Precision 0.9228434081007967
