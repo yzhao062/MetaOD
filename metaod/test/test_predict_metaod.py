@@ -26,10 +26,12 @@ class TestPredictMetaOD(unittest.TestCase):
     def test_prepare_trained_model(self):
         # load pretrained models
         prepare_trained_model()
+        print(os.path.join(os.getcwd(), "trained_models"))
         assert (os.path.isfile("trained_models.zip"))
         assert (os.path.isdir("trained_models"))
 
     def test_model_selection(self):
+        prepare_trained_model()
         # recommended models
         selected_models = select_model(self.X_train, n_selection=100)
         assert ((len(selected_models) == 100))
