@@ -116,7 +116,7 @@ Alternatively, you could clone and run setup.py file:
 * Python 3.5, 3.6, or 3.7
 * joblib>=0.14.1
 * liac-arff
-* numpy>=1.13
+* numpy>=1.18.1
 * scipy>=0.20
 * **scikit_learn==0.22.1**
 * pandas>=0.20
