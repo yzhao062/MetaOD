@@ -1,6 +1,21 @@
 Automating Outlier Detection via Meta-Learning (MetaOD)
 =====================================================================
 
+
+.. image:: https://img.shields.io/pypi/v/metaod.svg?color=brightgreen
+   :target: https://pypi.org/project/metaod/
+   :alt: PyPI version
+
+.. image:: https://img.shields.io/github/stars/yzhao062/metaod.svg
+   :target: https://github.com/yzhao062/metaod/stargazers
+   :alt: GitHub stars
+
+.. image:: https://img.shields.io/github/forks/yzhao062/metaod.svg?color=blue
+   :target: https://github.com/yzhao062/metaod/network
+   :alt: GitHub forks
+
+----
+
 **Development Status**: **As of 09/26/2020, MetaOD is under active development and in its alpha stage. Please follow, star, and fork to get the latest update**!
 For paper reproducibility, please see the paper_reproducibility folder for instruction.
 
@@ -95,19 +110,20 @@ Alternatively, you could clone and run setup.py file:
    pip install .
   
   
-**Required Dependencies (to be cleaned)**\ :
+**Required Dependencies**\ :
 
 
 * Python 3.5, 3.6, or 3.7
 * joblib>=0.14.1
 * liac-arff
-* matplotlib
 * numpy>=1.13
-* scipy>=0.19.1
-* scikit_learn>=0.19.1
-* pandas
-* psutil
-* pyod>=0.7.5
+* scipy>=0.20
+* **scikit_learn==0.23.0**
+* pandas>=0.20
+* pyod>=0.8
+
+**Note**: Since we need to load trained models, we fix the scikit-learn version
+to 0.20. We recommend you to use MetaOD in a fully fresh env to have the right dependency.
 
 
 Quick Start for Model Selection
