@@ -4,6 +4,7 @@
 import os
 import unittest
 
+from pyod.utils.data import generate_data
 from metaod.models.utility import prepare_trained_model
 from metaod.models.predict_metaod import select_model
 
