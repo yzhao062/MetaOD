@@ -110,35 +110,6 @@ Alternatively, you could clone and run setup.py file:
 * pyod>=0.7.5
 
 
-Quick Start for Meta Feature Generation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Getting the embedding of an arbitrary dataset is first step of MetaOD, which
-cam be done by our specialized meta-feature generation function.
-
-It may be used for other purposes as well, e.g., measuring the similarity of
-two datasets.
-
-.. code-block:: python
-
-    # import meta-feature generator
-    from metaod.models.gen_meta_features import gen_meta_features
-
-    meta_features = gen_meta_features(X)
-
-A simple example of visualizing two different environments using TSNE with
-our meta-features are shown below. The environment on the left is composed
-100 datasets with similarity, and the same color stands for same group of datasets.
-The environment on the left is composed
-62 datasets without known similarity. Our meta-features successfully capture
-the underlying similarity in the left figure.
-
-.. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
-   :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
-   :alt: meta_viz
-   :align: center
-
-
 Quick Start for Model Selection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -182,3 +153,34 @@ The key procedures are below:
    10th model Average Precision 0.9631787029256742
    50th model Average Precision 0.9228434081007967
    100th model Average Precision 0.9228434081007967
+
+
+Quick Start for Meta Feature Generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Getting the embedding of an arbitrary dataset is first step of MetaOD, which
+cam be done by our specialized meta-feature generation function.
+
+It may be used for other purposes as well, e.g., measuring the similarity of
+two datasets.
+
+.. code-block:: python
+
+    # import meta-feature generator
+    from metaod.models.gen_meta_features import gen_meta_features
+
+    meta_features = gen_meta_features(X)
+
+A simple example of visualizing two different environments using TSNE with
+our meta-features are shown below. The environment on the left is composed
+100 datasets with similarity, and the same color stands for same group of datasets.
+The environment on the left is composed
+62 datasets without known similarity. Our meta-features successfully capture
+the underlying similarity in the left figure.
+
+.. image:: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
+   :target: https://raw.githubusercontent.com/yzhao062/MetaOD/master/docs/images/meta_vis.jpg
+   :alt: meta_viz
+   :align: center
+
+
