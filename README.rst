@@ -18,6 +18,9 @@ Automating Outlier Detection via Meta-Learning (MetaOD)
    :target: https://circleci.com/gh/yzhao062/metaod
    :alt: Circle CI
 
+.. image:: https://travis-ci.org/yzhao062/MetaOD.svg?branch=master
+    :target: https://travis-ci.org/yzhao062/MetaOD
+
 ----
 
 **Development Status**: **As of 09/26/2020, MetaOD is under active development and in its alpha stage. Please follow, star, and fork to get the latest update**!
