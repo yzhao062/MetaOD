@@ -118,7 +118,7 @@ Alternatively, you could clone and run setup.py file:
 * liac-arff
 * numpy>=1.13
 * scipy>=0.20
-* **scikit_learn==0.23.0**
+* **scikit_learn==0.22.1**
 * pandas>=0.20
 * pyod>=0.8
 
