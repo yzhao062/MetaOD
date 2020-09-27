@@ -26,6 +26,7 @@ class TestPredictMetaOD(unittest.TestCase):
     def test_prepare_trained_model(self):
         # load pretrained models
         prepare_trained_model()
+        assert (os.path.isfile("trained_models.zip"))
         assert (os.path.isdir("trained_models"))
 
     def test_model_selection(self):
