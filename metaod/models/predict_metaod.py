@@ -43,7 +43,7 @@ def select_model(X, trained_model_location="trained_models", n_selection=1):
     # use all trained models for ensemble
     trained_models = [
         "train_0.joblib", 
-        # "train_1.joblib", 
+        "train_2.joblib",
         # "train_42.joblib"
         ]
     print(os.getcwd())

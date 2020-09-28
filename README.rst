@@ -143,39 +143,39 @@ The key procedures are below:
 
 #. Load some synthetic datasets
 
-.. code-block:: python
+    .. code-block:: python
 
-   # Generate sample data
-   X_train, y_train, X_test, y_test = \
-       generate_data(n_train=1000,
-                     n_test=100,
-                     n_features=3,
-                     contamination=0.5,
-                     random_state=42)
+    # Generate sample data
+    X_train, y_train, X_test, y_test = \
+        generate_data(n_train=1000,
+                      n_test=100,
+                      n_features=3,
+                      contamination=0.5,
+                      random_state=42)
 
 #. Use MetaOD to select top 100 models
 
-.. code-block:: python
+    .. code-block:: python
 
-   from metaod.models.utility import prepare_trained_model
-   from metaod.models.predict_metaod import select_model
+    from metaod.models.utility import prepare_trained_model
+    from metaod.models.predict_metaod import select_model
 
-   # load pretrained models
-   prepare_trained_model()
+    # load pretrained models
+    prepare_trained_model()
 
-   # recommended models. this returns the top model for X_train
-   selected_models = select_model(X_train, n_selection=100)
+    # recommended models. this returns the top model for X_train
+    selected_models = select_model(X_train, n_selection=100)
 
 
 #. Show the selected models' performance evaluation.
 
-.. code-block:: python
+    .. code-block:: python
 
 
-   1st model Average Precision 0.9729833161334711
-   10th model Average Precision 0.9631787029256742
-   50th model Average Precision 0.9228434081007967
-   100th model Average Precision 0.9228434081007967
+    1st model Average Precision 0.9729833161334711
+    10th model Average Precision 0.9631787029256742
+    50th model Average Precision 0.9228434081007967
+    100th model Average Precision 0.9228434081007967
 
 
 Quick Start for Meta Feature Generation
