@@ -15,7 +15,7 @@ Automating Outlier Detection via Meta-Learning (MetaOD)
    :alt: GitHub forks
 
 .. image:: https://circleci.com/gh/yzhao062/MetaOD.svg?style=svg
-   :target: https://circleci.com/gh/yzhao062/metaod
+   :target: https://circleci.com/gh/yzhao062/MetaOD
    :alt: Circle CI
 
 .. image:: https://travis-ci.org/yzhao062/MetaOD.svg?branch=master
