@@ -192,7 +192,7 @@ two datasets.
     # import meta-feature generator
     from metaod.models.gen_meta_features import gen_meta_features
 
-    meta_features = gen_meta_features(X)
+    meta_features, _ = generate_meta_features(X)
 
 A simple example of visualizing two different environments using TSNE with
 our meta-features are shown below. The environment on the left is composed
