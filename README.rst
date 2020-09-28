@@ -167,15 +167,14 @@ The key procedures are below:
     selected_models = select_model(X_train, n_selection=100)
 
 
-#. Show the selected models' performance evaluation.
+#. Show the selected models' performance evaluation (result may vary slightly due to built-in randomness).
 
    .. code-block:: python
 
 
-    1st model Average Precision 0.9729833161334711
-    10th model Average Precision 0.9631787029256742
-    50th model Average Precision 0.9228434081007967
-    100th model Average Precision 0.9228434081007967
+    1st model Average Precision 0.9780551579734139
+    10th model Average Precision 0.959749602397687
+    50th model Average Precision 0.6211392467111937
 
 
 Quick Start for Meta Feature Generation
