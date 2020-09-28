@@ -143,7 +143,7 @@ The key procedures are below:
 
 #. Load some synthetic datasets
 
-    .. code-block:: python
+   .. code-block:: python
 
     # Generate sample data
     X_train, y_train, X_test, y_test = \
@@ -155,7 +155,7 @@ The key procedures are below:
 
 #. Use MetaOD to select top 100 models
 
-    .. code-block:: python
+   .. code-block:: python
 
     from metaod.models.utility import prepare_trained_model
     from metaod.models.predict_metaod import select_model
@@ -169,7 +169,7 @@ The key procedures are below:
 
 #. Show the selected models' performance evaluation.
 
-    .. code-block:: python
+   .. code-block:: python
 
 
     1st model Average Precision 0.9729833161334711
