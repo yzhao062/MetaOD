@@ -1,9 +1,0 @@
-joblib>=0.14.1
-liac-arff
-matplotlib
-numpy>=1.18.1
-scipy>=0.19.1
-scikit_learn>=0.19.1
-pandas
-psutil
-pyod>=0.7.5
