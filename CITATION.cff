@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper in preferred-citation below."
+title: "MetaOD"
+abstract: "Automating outlier detection model selection via meta-learning."
+type: software
+authors:
+  - family-names: "Zhao"
+    given-names: "Yue"
+    orcid: "https://orcid.org/0000-0003-3401-4921"
+  - family-names: "Rossi"
+    given-names: "Ryan"
+  - family-names: "Akoglu"
+    given-names: "Leman"
+repository-code: "https://github.com/yzhao062/MetaOD"
+license: BSD-2-Clause
+keywords:
+  - "outlier-detection"
+  - "anomaly-detection"
+  - "model-selection"
+  - "meta-learning"
+  - "automl"
+  - "python"
+preferred-citation:
+  type: conference-paper
+  title: "Automatic Unsupervised Outlier Model Selection"
+  authors:
+    - family-names: "Zhao"
+      given-names: "Yue"
+      orcid: "https://orcid.org/0000-0003-3401-4921"
+    - family-names: "Rossi"
+      given-names: "Ryan"
+    - family-names: "Akoglu"
+      given-names: "Leman"
+  collection-title: "Advances in Neural Information Processing Systems (NeurIPS 2021)"
+  year: 2021
+  url: "https://openreview.net/forum?id=KCd-3Pz8VjM"
